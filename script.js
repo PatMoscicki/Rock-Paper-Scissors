@@ -11,12 +11,14 @@
 // display message in console.log
 
 
+// Computer choice randomizer
+
 function getComputerChoice(number) {
 let choice = ["Rock", "Paper", "Scissors"][Math.floor(Math.random()*3)];
 return choice;
 }
 
-
+// Function that allows a single round to be played - neither an optimal nor an elegant solution but it works
 
 function playRound(playerSelection, computerSelection) {
      if (playerSelection == "Scissors" && computerSelection == "Paper") {
@@ -27,20 +29,12 @@ function playRound(playerSelection, computerSelection) {
         console.log("Rock beats scissors, You lose!")
     }
 
-    else if (playerSelection == "Scissors" && computerSelection == "Scissors") {
-        console.log("Tie, Let's do it again!");
-    }
-
     else if (playerSelection == "Rock" && computerSelection == "Scissors") {
         console.log("Rock beats scissors, You win!");
     }
 
     else if (playerSelection == "Rock" && computerSelection == "Paper") {
         console.log("Paper beats rock, You lose!")
-    }
-
-    else if (playerSelection == "Rock" && computerSelection == "Rock") {
-        console.log("Tie, Let's do it again!");
     }
 
     else if (playerSelection == "Paper" && computerSelection == "Rock") {
@@ -51,19 +45,18 @@ function playRound(playerSelection, computerSelection) {
         console.log("Scissors beat paper, You lose!");
     }
 
-    else if (playerSelection == "Paper" && computerSelection == "Paper") {
+    else {
         console.log("Tie, Let's do it again!");
     }
 
 }
 
-const answer = "roCk;
+// Player selection function - case insensitive
+
+const answer = "scissors";
 let playerSelection = answer[0].toUpperCase() + answer.slice(1).toLowerCase();
 
 const computerSelection = getComputerChoice();
-// 
+
 console.log(playRound(playerSelection, computerSelection));
 
-
-
-// || playerSelection == "Rock" && computerSelection == "Rock" || playerSelection == "Paper" && computerSelection == "Paper"
