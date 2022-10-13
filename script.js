@@ -11,6 +11,10 @@
 // display message in console.log
 
 
+
+function game() {
+    for (let i = 0; i < 5; i++) {  
+
 // Computer choice randomizer
 
 function getComputerChoice(number) {
@@ -29,34 +33,43 @@ const computerSelection = getComputerChoice();
 
 
 function playRound(playerSelection, computerSelection) {
-
      if (playerSelection == "Scissors" && computerSelection == "Paper") {
+    score = 1;
       return "Scissors beat paper, You win!";
     }
 
     else if (playerSelection == "Scissors" && computerSelection == "Rock") {
+        score = -1;
         return "Rock beats scissors, You lose!"
+        
     }
 
     else if (playerSelection == "Rock" && computerSelection == "Scissors") {
+        score = 1;
         return "Rock beats scissors, You win!";
     }
 
     else if (playerSelection == "Rock" && computerSelection == "Paper") {
+        score = -1;
         return "Paper beats rock, You lose!";
     }
 
     else if (playerSelection == "Paper" && computerSelection == "Rock") {
+        score = 1;
        return "Paper beats rock, You win!";
     }
 
     else if (playerSelection == "Paper" && computerSelection == "Scissors") {
+        score = -1;
         return "Scissors beat paper, You lose!";
     }
 
-    else {
+    else  {
+        score = 0;
         return "Tie, Let's do it again!";
     }
+
+
 
 }
 
@@ -64,9 +77,30 @@ function playRound(playerSelection, computerSelection) {
 
 // Result display in console (playRound)
 console.log(playRound(playerSelection, computerSelection));
+console.log(score);
 
 // function game:
 // plays 5 rounds of playRound
-// lists all results returned from each of the 5 rounds played
-// displays results in console
+// sums wins returned from each of the 5 rounds played
+// displays final results in console
+ 
+
+}
+
+
+
+if (score > 0) {
+    console.log("You won the game");
+}
+
+else if (score < 0 ) {
+    console.log("Too bad, you lose");
+}
+
+else {
+    console.log("Looks like it's a tie");
+}
+
+}
+game();
 
