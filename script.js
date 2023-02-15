@@ -1,78 +1,67 @@
-// Initialize point values prior to game start
+// Initialize score prior to game start
 let playerScore = 0;
 let computerScore = 0;
 
-
-// Loop five rounds of the game
+// function playing five rounds of the game
 function game() {
     for (let i = 0; i < 5; i++) {
-
-// Random computer choice
-function getComputerChoice() {
-    let choice = ["Rock", "Paper", "Scissors"][Math.floor(Math.random()*3)];
-    return choice; 
+        playRound();
+   
+        
+// function returning computer random choice
+function getComputerChoice () {
+    const computerChoice = ["Rock", "Paper", "Scissors"][Math.floor(Math.random() * 3)];
+    return computerChoice;
 }
+
 const computerSelection = getComputerChoice();
 
-
-// Player choice - Case insensitive
+// player's choice - case insensitive
 const answer = prompt("Choose rock, paper or scissors");
 const playerSelection = answer[0].toUpperCase() + answer.slice(1).toLowerCase();
 
 
-// Play one round of the game / calculate results of each round:
+// function playing a single round of the game
 function playRound(playerSelection, computerSelection) {
-    
-   if (playerSelection == computerSelection) {
-        return "Draw, try again"; 
+    if (playerSelection == "Rock" && computerSelection == "Paper") {
+        computerScore += 1;
+        return "You lose! Paper beats rock!";
     }
-
-    else if (playerSelection == "Rock") {
-        if (computerSelection == "Scissors") {
-            playerScore += 1;
-            return "Rock wins, congrats";
-        }
-        else {
-            computerScore += 1;
-            return "Paper wins, too bad";
-        }
+    else if (playerSelection == "Paper" && computerSelection == "Rock") {
+        playerScore += 1;
+        return "You win! Paper beats Rock!";
     }
-
-    else if (playerSelection == "Paper") {
-        if (computerSelection == "Rock") {
-            playerScore += 1;
-            return "Paper wins, congrats"
-        }
-        else {
-            computerScore += 1;
-            return "Scissors win, too bad";
-        }
+    else if (playerSelection == "Paper" && computerSelection == "Scissors") {
+        computerScore += 1;
+        return "You lose! Scissors beat Paper!";
     }
-
-    else if (playerSelection == "Scissors") {
-        
-        if (computerSelection == "Paper") {
-            playerScore += 1;
-            return "Scissors win, congrats";   
-        }
-        else {
-            computerScore += 1;
-            return "Rock wins, too bad";
-        }
+    else if (playerSelection == "Scissors" && computerSelection == "Paper") {
+        playerScore += 1;
+        return "You win! Scissors beat Paper!";
     }
-
+    else if (playerSelection == "Scissors" && computerSelection == "Rock") {
+        computerScore += 1;
+        return "You lose! Rock beats Scissors!";
+    }
+    else if (playerSelection == "Rock" && computerSelection == "Scissors") {
+        playerScore += 1;
+        return "You win! Rock beats scissors!";
+    }
+    else if (playerSelection == computerSelection) {
+        return "Draw! Try again";
+    }
     else {
-        return "Wrong choice, pick again";
+        return "Please choose rock, paper or scissors";
     }
- 
 }
 
 console.log(playRound(playerSelection, computerSelection));
+console.log(playerSelection);
+console.log(computerSelection);
 
-    }
-}
+}}
 
-// Calculate final results of the game after five rounds
+// function calculating score
 function finalResult() {
     if (playerScore > computerScore) {
         return "Final result: You won the game";
@@ -86,7 +75,7 @@ function finalResult() {
     }
 }
 
-// Call game function, display final results
+// Calling the game function 
 game();
 console.log(finalResult());
 
